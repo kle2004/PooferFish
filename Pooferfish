@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cat Meow</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      display: grid;
+      place-items: center;
+      height: 100vh;
+      background: #95c8fc;
+    }
+
+    .wrap {
+      text-align: center;
+      padding: 24px;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    #counter {
+      margin-top: 12px;
+      font-size: 16px;
+      color: white;
+    }
+
+    img {
+      width: min(320px, 80vw);
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <p class="title">Tap the poofer fish Michael</p>
+
+    <img id="fish" src="cat.jpg" alt="Poofer Fish" />
+
+    <p id="counter">Taps: 0</p>
+
+    <audio id="meow" src="meow.mp3" preload="auto"></audio>
+  </div>
+
+  <script>
+    const audio = document.getElementById("meow");
+    const fish = document.getElementById("fish");
+    const counterEl = document.getElementById("counter");
+
+    let taps = Number(localStorage.getItem("taps")) || 0;
+    counterEl.textContent = `Taps: ${taps}`;
+
+    function handleTap(e) {
+      audio.muted = false;
+      audio.volume = 1.0;
+      audio.currentTime = 0;
+
+      audio.play().catch(() => {});
+
+      taps += 1;
+      localStorage.setItem("taps", taps);
+      counterEl.textContent = `Taps: ${taps}`;
+
+      if (e) e.preventDefault?.();
+    }
+
+    fish.addEventListener("touchstart", handleTap, { passive: false });
+    fish.addEventListener("click", handleTap);
+  </script>
+</body>
+</html>
+
