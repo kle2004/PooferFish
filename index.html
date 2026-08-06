@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Poofer Fish</title>
+  <title>Nguyên Ăn Ngon Quá!</title>
 
   <style>
     body {
@@ -12,7 +12,7 @@
       display: grid;
       place-items: center;
       height: 100vh;
-      background: #95c8fc;
+      background: #99cf84;
     }
 
     .wrap {
@@ -27,6 +27,13 @@
       margin-bottom: 16px;
     }
 
+    .subtitle {
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      margin-bottom: 16px;
+    }
+    
     #counter {
       margin-top: 12px;
       font-size: 20px;
@@ -44,18 +51,18 @@
 
 <body>
   <div class="wrap">
-    <p class="title">Tap the poofer fish, Michael!</p>
+    <p class="title">Nguyên Ăn Ngon Quá!</p>
+    <p class="subtitle">Bật âm lượng điện thoại lên để nghe tiếng Nguyên ăn nhé!</p>
+    <img id="nguyen" src="Nguyennie.jpeg" alt="Nguyennie" />
 
-    <img id="fish" src="Poofer fish.jpg" alt="Poofer Fish" />
-
-    <p id="counter">Taps: 0</p>
+    <p id="counter">Total Taps: 0</p>
 
     <audio id="glubglub" src="glubglub.mp3" preload="auto"></audio>
   </div>
 
   <script>
     const audio = document.getElementById("glubglub");
-    const fish = document.getElementById("fish");
+    const nguyen = document.getElementById("nguyen");
     const counterEl = document.getElementById("counter");
 
     let taps = Number(localStorage.getItem("taps")) || 0;
@@ -80,4 +87,3 @@
   </script>
 </body>
 </html>
-
